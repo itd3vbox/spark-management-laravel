@@ -1,0 +1,29 @@
+& > .content-top
+    box-sizing: border-box
+    padding: 10px
+    display: grid
+    grid-template-columns: repeat(auto-fill, 30px)
+    justify-content: center
+    gap: 10px
+    flex-shrink: 0
+
+    button,
+    a
+        width: 30px
+        height: 30px
+        display: inline-flex
+        justify-content: center
+        align-items: center
+        background-color: transparent
+        border-radius: 0.4rem
+        border: 1px solid var(--color-1)
+        color: var(--color-2)
+
+        svg
+            width: 15px
+            path
+                fill: var(--color-16)
+
+        &:hover svg path
+            fill: var(--color-2)
+

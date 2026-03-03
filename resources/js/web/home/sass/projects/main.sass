@@ -1,0 +1,61 @@
+.h-projects
+    width: 100%
+    margin-top: 25px
+    display: flex
+    align-items: flex-start
+    flex-wrap: wrap
+    gap: 25px
+
+    .block-zero
+        min-width: 400px
+        flex: 1
+        border-radius: 1rem
+        background-color: var(--color-3)
+        color: var(--color-2)
+        display: flex
+        flex-wrap: wrap
+        gap: 10px
+        box-sizing: border-box
+        padding: 10px
+
+        @import '@/components-metrics/projects-progress/sass/main'
+
+        .metric-progress
+            width: 250px
+            box-sizing: border-box
+            padding: 10px
+            border-radius: 1rem
+            border: 1px solid var(--color-4)
+            .wrapper
+                width: 100%
+                max-height: 300px
+
+        .metric-projects-progress
+            flex: 1
+            min-width: 300px
+            box-sizing: border-box
+            padding: 10px
+            border-radius: 1rem
+            border: 1px solid var(--color-4)
+            .wrapper
+                width: 100%
+                max-height: 300px
+
+    .block-projects
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        gap: 10px
+
+        @import './project/main'
+
+    @media ( max-width: 1000px )
+        flex-direction: column
+        .block-zero
+            min-width: auto
+            width: 100%
+
+    @media screen and ( max-width: 400px )
+        .metric-projects-progress
+            width: 100%
+        

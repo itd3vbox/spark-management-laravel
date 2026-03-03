@@ -1,0 +1,47 @@
+.m-tabs-menu
+    width: 100%
+    display: flex
+    justify-content: space-between
+    align-items: center
+    gap: 10px
+    box-sizing: border-box
+    padding: 10px
+
+    .menu
+        flex: 1
+        display: flex
+        gap: 10px
+
+        button
+            width: 30px
+            height: 30px
+            background-color: var(--color-3)
+            color: var(--color-2)
+            font-size: 0.8rem
+            box-sizing: border-box
+            padding: 5px
+            border-radius: 15rem
+
+    .options
+        display: flex
+        gap: 5px
+        button
+            background-color: var(--color-2)
+            color: var(--color-16)
+            svg
+                width: 20px
+                height: 20px
+
+.m-tabs-contents
+    width: 100%
+    flex: 1
+    display: flex
+    flex-direction: column
+
+    .tc-content
+        width: 100%
+        flex: 1
+        display: none
+        &.selected
+            display: block
+    

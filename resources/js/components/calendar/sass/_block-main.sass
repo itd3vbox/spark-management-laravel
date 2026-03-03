@@ -1,0 +1,63 @@
+& > .block-main
+    width: 100%
+    box-sizing: border-box
+    padding: 5px 10px
+
+    & > .days 
+        display: flex
+        align-items: center
+        .day
+            width: calc(100% / 7)
+            height: 20px
+            font-size: 0.8rem
+            font-weight: bolder
+            display: flex
+            align-items: center
+            justify-content: center
+
+    & > .dates 
+        display: flex
+        align-items: center
+        flex-wrap: wrap
+
+        .date
+            width: calc(100% / 7)
+            height: 30px
+            font-size: 0.8rem
+            font-weight: bolder
+            display: flex
+            align-items: center
+            justify-content: center
+            box-sizing: border-box
+            padding: 2px
+            position: relative
+            
+            .btn
+                width: 100%
+                height: 100%
+                font-size: 0.8rem
+                padding: 0
+                border: none
+                background-color: var(--color-3)
+                color: var(--color-2)
+
+            &.events::after
+                content: ''
+                display: block
+                width: 4px
+                height: 4px
+                border-radius: 50%
+                background-color: var(--color-8)
+                color: var(--color-2)
+                position: absolute
+                bottom: 2px
+                left: 50%
+                transform: translateX(-50%)
+
+            &.month-prev .btn,
+            &.date.month-next .btn
+                color: var(--color-4)
+
+            .btn:hover
+                background-color: var(--color-4)
+                color: var(--color-2)

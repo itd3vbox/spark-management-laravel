@@ -1,0 +1,25 @@
+.button-toggle
+    width: 60px
+    height: 30px
+    box-sizing: border-box
+    padding: 1px
+    border-radius: 30px
+    background-color: var(--color-3)
+    position: relative
+
+    button
+        position: relative
+        width: 29px
+        height: 29px
+        border-radius: 50%
+        outline: none
+        padding: 0
+        border: none
+        background-color: var(--color-5)
+        transition: left 1s
+
+    &.on
+        button
+            background-color: var(--color-9)
+            left: 50%
+

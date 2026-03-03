@@ -1,0 +1,52 @@
+.dc-main
+    width: 100%
+    flex: 1
+    box-sizing: border-box
+    padding: 10px
+
+    @import "@/components/image-uploader/sass/main"
+
+    form
+        width: 100%
+        display: block
+
+    .form-row
+        width: 100%
+        box-sizing: border-box
+        padding: 10px
+
+        .image-uploader
+            width: 100%
+            height: 150px
+            margin-top: 10px
+
+        label
+            width: 100%
+            display: block
+            font-size: 0.8rem
+            font-weight: bolder
+        input,
+        textarea
+            width: 100%
+            display: block
+            box-sizing: border-box
+            padding: 10px
+            border-radius: 0.4rem
+            background-color: var(--color-2)
+            border: 1px solid black
+            font-size: 0.8rem
+            margin-top: 10px
+
+        textarea
+            height: 150px
+
+        .error
+            font-size: 0.8rem
+            color: red
+            margin-top: 10px
+
+        button
+            box-sizing: border-box
+            padding: 10px
+            border-radius: 0.4rem
+            box-shadow: 1px 1px 4px #ccc

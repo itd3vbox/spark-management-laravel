@@ -1,0 +1,71 @@
+#page-top
+    width: 100%
+    height: 50px
+    display: flex
+    align-items: center
+    background-color: var(--color-3)
+    color: var(--color-2)
+    border-radius: 1rem
+    box-sizing: border-box
+    padding: 5px 10px
+    gap: 10px
+    position: relative
+
+    svg path
+        fill: var(--color-16)
+
+    & > .icon
+        width: 40px
+        svg
+            width: 20px
+
+    & > input
+        background-color: transparent
+        color: var(--color-2)
+        outline: none
+        border: none
+        flex: 1
+
+    & > input::placeholder
+        color: var(--color-4)
+
+    & > .btn-alert,
+    & > .btn-user
+        position: relative
+        background-color: var(--color-3)
+        color: var(--color-2)
+        
+        svg
+            width: 20px
+
+        &:hover svg path
+            fill: var(--color-2)
+
+    & > .btn-alert.available .indicator
+        display: block
+
+    & > .btn-alert .indicator
+        width: 5px
+        height: 5px
+        border-radius: 50%
+        background-color: var(--color-5)
+        position: absolute
+        top: 10px
+        left: 10px
+        display: none
+
+    & > .btn-user img 
+        width: 30px
+        height: 30px
+        border-radius: 50%
+        object-fit: cover
+        background-color: var(--color-4)
+
+    @import './_user'
+    @import './_list'
+        
+
+    @media (max-width: 425px) 
+        & > .btn-alert,
+        & > .btn-user
+            display: none

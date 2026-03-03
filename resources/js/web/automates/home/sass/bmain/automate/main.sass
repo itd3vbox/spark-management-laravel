@@ -1,0 +1,80 @@
+.automate
+    width: 270px
+    height: 150px
+    border-radius: 1rem
+    background-color: var(--color-3)
+    color: var(--color-2)
+    box-sizing: border-box
+    padding: 10px
+    display: flex
+    flex-direction: column
+    gap: 10px
+
+    &.selected
+        background-color: var(--color-4)
+
+    .block-top
+        display: flex
+        justify-content: space-between
+        align-items: center
+        gap: 10px
+        .icon
+            width: 30px
+            height: 30px
+            display: flex
+            justify-content: center
+            align-items: center
+            background-color: var(--color-3)
+            color: var(--color-2)
+            border-radius: 0.4rem
+            svg
+                width: 15px
+
+        .options
+            display: flex
+            gap: 5px
+            button
+                background-color: var(--color-3)
+                color: var(--color-2)
+                svg
+                    width: 15px
+
+    .block-main
+        width: 100%
+        flex: 1
+
+        .name
+            font-size: 0.8rem
+            font-weight: bolder
+
+        .project
+            margin-top: 10px
+            font-size: 0.8rem
+            display: flex
+            align-items: center
+            gap: 5px
+
+        .date-latest
+            display: flex
+            align-items: center
+            gap: 5px
+            font-size: 0.8rem
+            margin-top: 5px
+
+    .block-bottom
+        display: flex
+        justify-content: flex-end
+        align-items: center
+
+        .type
+            height: 20px
+            background-color: var(--color-4)
+            color: var(--color-2)
+            font-size: 10px
+            display: flex
+            align-items: center
+            box-sizing: border-box
+            padding: 0 5px
+            border-radius: 10px
+
+    @import './_block-tools'

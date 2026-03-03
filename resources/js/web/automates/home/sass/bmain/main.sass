@@ -1,0 +1,16 @@
+.a-block-main
+    width: 100%
+    flex: 1
+
+    .list
+        width: 100%
+        display: grid
+        grid-template-columns: repeat(auto-fill, 270px)
+        justify-content: center
+        gap: 25px
+
+        @import './automate/main'
+
+    @import "@/components/pagination/sass/main"
+    .pagination
+        margin-top: 25px

@@ -1,0 +1,70 @@
+.automate
+    width: 100%
+    background-color: aqua
+    border-radius: 1rem
+    box-sizing: border-box
+    padding: 10px
+    &.selected
+        background-color: teal
+
+    .block-top
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+        .icon
+            width: 40px
+            height: 40px
+            border-radius: 0.4rem
+            display: flex
+            justify-content: center
+            align-items: center
+            background-color: white
+            svg
+                width: 20px
+
+        .type
+            height: 30px
+            font-size: 15px
+            padding: 0 10px
+            border-radius: 15px
+            background-color: white
+            display: flex
+            justify-content: center
+            align-items: center
+
+    .block-main
+        width: 100%
+        margin-top: 10px
+        
+        h6
+            font-size: 0.8rem
+        .description-short
+            font-size: 0.8rem
+            margin-top: 10px
+        .date
+            display: flex
+            gap: 5px
+            align-items: center
+            margin-top: 10px
+            .label
+                font-size: 0.8rem
+                font-weight: bolder
+            .value
+                font-size: 0.8rem
+    .block-check
+        display: flex
+        justify-content: flex-end
+        margin-top: 10px
+
+        button
+            width: 30px
+            height: 30px
+            display: flex
+            justify-content: center
+            align-items: center
+            border-radius: 0.4rem
+            background-color: aqua
+            box-shadow: 1px 1px 4px black
+            svg
+                width: 15px

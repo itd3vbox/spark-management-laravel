@@ -1,0 +1,37 @@
+#page-menu
+    @media ( max-width:  900px)
+        z-index: 101
+        position: fixed
+        top: 10px
+        left: 10px
+
+#page-menu .pg-wrapper
+    width: 270px
+    height: 100%
+    border-radius: 1rem
+    display: flex
+    flex-direction: column
+    background-color: var(--color-3)
+    color: var(--color-2)
+    overflow-x: hidden
+    overflow-y: auto
+
+    ul
+        list-style: none
+
+    @import './_content-main'
+    @import './_content-top'
+    @import './_content-close'
+
+    @media ( max-width:  900px)
+        position: fixed
+        top: 10px
+        left: 10px
+        height: calc( 100vh - 20px )
+        background-color: var(--color-3)
+        box-shadow: 1px 1px 4px var(--color-1)
+        z-index: 101
+        display: none
+
+        &.selected
+            display: flex

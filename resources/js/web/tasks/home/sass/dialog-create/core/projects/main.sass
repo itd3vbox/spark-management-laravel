@@ -1,0 +1,20 @@
+.projects
+    width: 100%
+    flex: 1
+    display: flex
+    flex-direction: column
+    gap: 10px
+
+    .list
+        width: 100%
+        display: flex
+        flex-direction: column
+        gap: 10px
+
+        @import './_project'    
+        
+    @import '@/components/pagination/sass/main'
+    .pagination
+        margin: 0
+
+    @import './_message-empty'

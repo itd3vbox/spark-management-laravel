@@ -1,0 +1,42 @@
+.notes
+    width: 100%
+    display: flex
+    flex-direction: column
+    gap: 10px
+
+    & > .options
+        width: 100%
+        display: flex
+        justify-content: flex-end
+        gap: 5px
+
+        .btn-close,
+        .btn-create
+            width: 30px
+            height: 30px
+            border-radius: 0.4rem
+            border: 1px solid var(--color-16)
+            background-color: var(--color-2)
+            color: var(--color-16)
+            svg
+                width: 15px
+                height: 15px
+
+    .list
+        width: 100%
+        flex: 1
+
+        @import  './_masonry'
+
+        .note
+            width: 100%
+            box-sizing: border-box
+            padding: 10px
+            border-radius: 8px
+            background: var(--color-3)
+            color: var(--color-2)
+            box-shadow: 0 2px 6px #000
+
+
+    @import './dialog-create/main'
+    @import './dialog-edit/main'

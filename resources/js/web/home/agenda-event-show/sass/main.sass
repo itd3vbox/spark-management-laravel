@@ -1,0 +1,28 @@
+.dialog-agenda-event-show
+    width: 1000px
+    height: calc( 100% - 20px )
+    border-radius: 1rem
+    background-color: var(--color-2)
+    box-shadow: 1px 1px 4px #000
+    position: fixed
+    top: 10px
+    left: 50%
+    transform: translateX(-50%)
+    overflow: auto
+    display: none
+    flex-direction: column
+    z-index: 110
+
+    &.selected
+        display: flex
+
+    @import './_close'
+    @import './_zero'
+    @import './core/main'
+
+    @media screen and ( max-width: 1100px )
+        width: calc( 100% - 20px )
+   
+
+    
+

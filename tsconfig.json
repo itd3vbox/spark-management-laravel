@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        //"target": "es5",
+        "target": "ES2017", // or a later version like ES2018, ES2019, etc.
+        "lib": ["ES2017", "DOM"], // Include 'ES2017' or later to support async/await
+        "module": "esnext",
+        "jsx": "react",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "typeRoots": ["./types", "./node_modules/@types"]
+    },
+    "include": [
+        "resources/js/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
+  

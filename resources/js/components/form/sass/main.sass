@@ -1,0 +1,78 @@
+*[class*="form-error"],
+*[class*="form-warning"],
+*[class*="form-message"]
+    display: block
+    margin: 10px 0
+    box-sizing: border-box
+    border-radius: 5px
+    padding: 10px
+
+.form-row   
+    label,
+    input,
+    textarea
+        display: block
+        margin: 10px 0
+        box-sizing: border-box
+    input,
+    textarea
+        border: none
+        outline: none
+        border-radius: 0.4rem
+
+    label
+        font-weight: bolder
+
+    input
+        width: 100%
+        height: 40px
+        border-radius: 5px
+        outline: none
+        padding: 10px
+
+    .input-icon
+        position: relative
+        .icon,
+        i
+            width: 30px
+            height: 30px
+            font-size: 20px
+            display: flex
+            justify-content: center
+            align-items: center
+            position: absolute
+            top: 50%
+            left: 5px
+            transform: translateY(-50%)
+        svg
+            width: 15px
+            max-height: 15px
+        input
+            padding: 5px 5px 5px 40px
+
+    .input-icon
+        .icon,
+        i
+            opacity: 0.5
+        input:focus + i,
+        input:focus + .icon
+            opacity: 1
+
+    textarea
+        resize: vertical
+
+    .button-submit
+        display: flex
+        gap: 10px
+        font-size: 1rem
+        font-weight: bolder
+        box-sizing: border-box
+        padding: 10px 25px
+        border-radius: 0.4rem
+        outline: none
+        border: none
+        box-shadow: 1px 1px 4px var(--color-100)
+        svg
+            width: 15px
+    
+        

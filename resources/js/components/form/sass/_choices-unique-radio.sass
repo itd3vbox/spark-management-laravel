@@ -1,0 +1,32 @@
+.form-choices-unique-radio
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    gap: 10px
+
+    @import '@/components-react/button-icon/sass/main'
+    
+    .choice
+        display: inline-flex
+        align-items: center
+        gap: 5px
+
+        &.selected button
+            background-color: var(--color-9)
+
+        button
+            width: 30px
+            height: 30px
+            border-radius: 1rem
+            background-color: var(--color-4)
+            color: var(--color-2)
+
+            svg
+                width: 15px
+
+        .value
+            font-size: 0.8rem
+            color: var(--color-2)
+
+        
+    

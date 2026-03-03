@@ -1,0 +1,66 @@
+.note
+    width: 100%
+    height: 250px
+    display: flex
+    flex-direction: column
+    border-radius: 1rem
+    color: var(--color-2)
+
+    
+    &:nth-child(3n + 1)
+        background-color: var(--color-3)
+
+    &:nth-child(3n + 2)
+        background-color: var(--color-4)
+
+    &:nth-child(3n)
+        background-color: var(--color-5)
+
+    @import './_block-tools'
+    
+    .t-top
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: space-between
+        gap: 10px
+        box-sizing: border-box
+        padding: 10px
+
+        .date
+            flex: 1
+            display: inline-flex
+            align-items: center
+            gap: 5px
+            .icon
+                width: 15px
+                height: 15px
+            .value
+                font-size: 0.8rem
+
+        .options
+            @import '@/components/button-icon/sass/main'
+            .button-icon
+                background-color: transparent
+                color: var(--color-2)
+                svg
+                    width: 15px
+            
+    .t-main
+        width: 100%
+        flex: 1
+        box-sizing: border-box
+        padding: 10px
+        border-top: dotted 1px var(--color-3)
+        display: flex
+        flex-direction: column
+        gap: 10px
+
+        .title
+            font-size: 0.9rem
+            text-overflow: ellipsis
+            overflow: hidden
+            white-space: nowrap
+
+        .content
+            font-size: 0.8rem

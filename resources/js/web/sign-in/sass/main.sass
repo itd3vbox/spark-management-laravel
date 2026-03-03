@@ -1,0 +1,134 @@
+\:root
+    --color-1: #000000
+    --color-2: #ffffff
+    --color-3: #3b3b49
+    --color-4: #70536f
+    --color-5: #b36a80
+    --color-6: #eb8a79
+    --color-7: #ffbb6a
+    --color-8: #f9f871
+
+    --color-11: #555063
+    --color-12: #555063
+    --color-13: #73667e
+    --color-14: #947c97
+    --color-15: #b792b0
+    --color-16: #dba9c6
+
+*
+    margin: 0
+    padding: 0
+
+a
+    text-decoration: none
+
+button
+    outline: none
+    border: none
+    cursor: pointer
+
+html,
+body
+    width: 100%
+    height: 100vh
+    overflow: hidden
+    display: flex
+    justify-content: center
+    background-color: var(--color-11)
+        
+#sign-in
+    width: 100%
+    height: 100vh
+    max-width: 1400px
+    max-height: 1000px
+    margin: auto
+    display: flex
+    gap: 25px
+    overflow: hidden
+    box-sizing: border-box
+    padding: 10px
+
+    .si-block-left
+        width: 400px
+        border-radius: 1rem
+        background-color: var(--color-1)
+        overflow: hidden
+
+        img
+            width: 100%
+            height: 100%
+            object-fit: cover
+            object-position: center
+
+    .si-block-right
+        flex: 1
+        border-radius: 1rem
+        background-color: var(--color-1)
+        color: var(--color-2)
+        display: flex
+        justify-content: center
+        align-items: center
+        box-sizing: border-box
+        padding: 100px 10px
+
+        @import '@/components/form/sass/main'
+        @import '@/components/form/sass/_input-password'
+        @import '@/components/button-text/sass/main'
+
+        .wrapper
+            width: 100%
+            max-width: 500px
+        
+
+            h1
+                font-size: 2rem
+            p
+                font-size: 0.8rem
+                margin-top: 25px
+            
+            h4
+                font-size: 1.3rem
+                margin-top: 25px
+                color: var(--color-5)
+
+            .form-row
+                margin-top: 25px
+
+            .form-errors
+                font-size: 0.8rem
+                font-weight: bolder
+                color: var(--color-6)
+
+            .form-row input
+                background-color: var(--color-1)
+                color: var(--color-2)
+                box-sizing: border-box
+                border: 1px solid var(--color-3)
+
+            label
+                color: var(--color-4)
+                font-size: 0.8rem
+
+            .button-text
+                font-size: 1rem
+                font-weight: bolder
+                text-transform: uppercase
+                background-color: var(--color-3)
+                color: var(--color-2)
+            
+            
+
+    @media ( max-width: 1000px )
+        flex-direction: column
+        overflow: auto
+
+        .si-block-left
+            width: 100%
+            height: 300px
+            flex-shrink: 0
+
+        .si-block-right
+            width: 100%
+            
+
+        

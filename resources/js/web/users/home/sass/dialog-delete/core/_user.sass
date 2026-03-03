@@ -1,0 +1,116 @@
+.user
+    width: 100%
+    height: 250px
+    border-radius: 1rem
+    background-color: var(--color-3)
+    color: var(--color-2)
+    box-sizing: border-box
+    padding: 10px
+    display: flex
+    flex-direction: column
+    gap: 10px
+    margin-bottom: 10px
+
+    .block-top
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: space-between
+        gap: 25px
+
+        .date-from
+            height: 30px
+            font-size: 15px
+            border-radius: 15px
+            background-color: var(--color-2)
+            color: var(--color-3)
+            padding: 0 10px
+            display: inline-flex
+            align-items: center
+
+        @import '@/components/button-icon/sass/main'
+        .button-icon
+            background-color: var(--color-3)
+            color: var(--color-2)
+            svg
+                width: 15px
+
+    .block-core
+        width: 100%
+        flex: 1
+        display: flex
+        flex-direction: column
+        gap: 10px
+
+        .avatar-id
+            width: 100%
+            display: flex
+            justify-content: space-between
+            gap: 25px
+
+            .avatar
+                width: 40px
+                height: 40px
+                border-radius: 1rem
+                background-color: var(--color-3)
+                box-shadow: 1px 1px 4px var(--color-1)
+                position: relative
+                overflow: hidden
+
+                img
+                    width: 100%
+                    height: 100%
+                    object-fit: contain
+                    object-position: center
+                    
+
+            .id
+                font-size: 0.8rem
+                display: inline-flex
+                align-items: center
+                gap: 5px
+
+                .label
+                    font-size: 0.8rem
+                    font-weight: bolder
+                .value
+                    font-size: 1.1rem
+
+        .details
+            width: 100%
+            .username
+                font-size: 0.8rem
+            .roles
+                width: 100%
+                display: flex
+                flex-wrap: wrap
+                gap: 10px
+                margin-top: 5px
+                .role
+                    height: 20px
+                    display: inline-flex
+                    align-items: center
+                    padding: 0 10px
+                    border-radius: 10px
+                    font-size: 10px
+                    background-color: var(--color-1)
+                    color: var(--color-2) 
+                    svg 
+                        width: 15px
+                        height: 15px
+
+        .indicators
+            width: 100%
+            height: 1
+            display: flex
+            gap: 10px
+
+            .indicator
+                width: calc( 50% - (10px / 2) )
+                height: 100%
+                border-radius: 1rem
+                border: 1px solid var(--color-1)
+                padding: 10px
+                display: flex
+                flex-direction: column
+                justify-content: center

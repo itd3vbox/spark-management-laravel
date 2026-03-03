@@ -1,0 +1,27 @@
+& > .content-close
+    box-sizing: border-box
+    padding: 10px
+    display: flex
+    justify-content: flex-end
+    align-items: center
+
+    .btn
+        width: auto
+        height: auto
+        font-size: 15px
+        padding: 0
+        background-color: transparent
+        color: blueviolet
+        border: none
+        color: var(--color-2)
+        
+        svg
+            width: 15px
+            path
+                fill: var(--color-16)
+
+        &:hover svg path
+            fill: var(--color-2)
+
+    @media (min-width: 900px)
+        display: none
