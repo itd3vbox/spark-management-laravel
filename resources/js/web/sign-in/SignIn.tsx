@@ -119,12 +119,12 @@ export default class SignIn extends React.Component<SignInProps, SignInState>
         return (
             <>
                 <div className="si-block-left">
-                    <img src="/images/project-manager.png" alt="" />
+                    <img src="/images/spark-management.png" alt="" />
                 </div>
                 <div className="si-block-right">
                     <div className="wrapper">
-                        <h1>Project Manager - Space</h1>
-                        <p>Ready for a new adventure.</p>
+                        <h1>Spark Management</h1>
+                        <p>Boost your productivity with smart tools.</p>
                         <h4>Sign In</h4>
                         <form onSubmit={ (event: React.FormEvent<HTMLFormElement>) => event.preventDefault() }>
                             <div className="form-row">
