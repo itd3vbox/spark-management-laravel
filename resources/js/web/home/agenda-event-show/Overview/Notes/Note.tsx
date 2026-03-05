@@ -84,16 +84,6 @@ export default class Task extends React.Component<TaskProps, TaskState>
         }
     }
 
-    getIcon(link: string) {
-        if (link.includes('github.com')) {
-            return (<FontAwesomeIcon icon={faGithub} />);
-        } else if (link.includes('dribbble.com')) {
-            return (<FontAwesomeIcon icon={faDribbble} />);
-        } else {
-            return (<FontAwesomeIcon icon={faGlobe} />);
-        }
-    }
-
     handleBlockToolsOnSelect(event: any)
     {
         
@@ -113,6 +103,16 @@ export default class Task extends React.Component<TaskProps, TaskState>
             toolsIsSelected: true,
         })
 
+    }
+
+    getIcon(link: string) {
+        if (link.includes('github.com')) {
+            return (<FontAwesomeIcon icon={faGithub} />);
+        } else if (link.includes('dribbble.com')) {
+            return (<FontAwesomeIcon icon={faDribbble} />);
+        } else {
+            return (<FontAwesomeIcon icon={faGlobe} />);
+        }
     }
 
     handleBlockToolsOnSelectOnly()
@@ -140,7 +140,7 @@ export default class Task extends React.Component<TaskProps, TaskState>
         for (let index = 0; index < keywords.length; index++) {
             const keyword = keywords[index];
             elements.push(
-                <div className="keyword" key={index}>{ keyword }</div>
+                <div className="keyword">{ keyword }</div>
             )
         }
         return (
@@ -155,29 +155,13 @@ export default class Task extends React.Component<TaskProps, TaskState>
         for (let index = 0; index < links.length; index++) {
             const link = links[index];
             elements.push(
-                <a key={index}
-                    href={link} target="_blank" rel="noopener noreferrer" className="button-icon btn-link">
+                <a href={link} target="_blank" rel="noopener noreferrer" className="button-icon btn-link">
                     {this.getIcon(link)}
                 </a>
             )
         }
         return (
             <div className="links">{ elements }</div>
-        )
-    }
-
-    renderEvent()
-    {
-        const event = this.props.data.event
-        if (!event)
-            return (<></>)
-        return (
-            <div className="event">
-                <div className="icon">
-                    <CalendarIcon />
-                </div>
-                <div className="date">{ event.date + ' ' + event.time}</div>
-            </div>
         )
     }
 
@@ -229,7 +213,6 @@ export default class Task extends React.Component<TaskProps, TaskState>
                     </div>
                     { this.renderKeywords() }
                     { this.renderLinks() }
-                    { this.renderEvent() }
                 </div>
                 { this.renderTools() }
             </div>

@@ -39,6 +39,7 @@ class NoteController extends Controller
             'is_asc' => 'nullable|boolean',
             'max' => 'nullable|integer|min:1|max:100',
             'notes_id' => 'nullable|integer|exists:notes,id',
+            'event_id' => 'nullable|integer|exists:agenda_events,id',
             'keywords' => 'nullable|string',
         ]);
 
@@ -46,13 +47,14 @@ class NoteController extends Controller
             'is_asc' => false,
             'max' => 20,
             'keywords' => null,
+            'event_id' => null,
         ], $validated);
 
-        $projects = $this->noteSearchService->searchAll($options);
+        $notes = $this->noteSearchService->searchAll($options);
 
         return response()->json([
-            'message' => 'Projects retrieved successfully',
-            'data' => $projects,
+            'message' => 'Notes retrieved successfully',
+            'data' => $notes,
         ], 200);
     }
 
@@ -78,6 +80,7 @@ class NoteController extends Controller
             'content' => 'nullable|string',
             'links' => 'nullable|string',
             'keywords' => 'nullable|string',
+            'event_id' => 'nullable|exists:agenda_events,id',
         ]);
 
         $note = new NoteEntity();
@@ -85,6 +88,7 @@ class NoteController extends Controller
         $note->content = $validated['content'] ?? null;
         $note->links = $validated['links'] ?? null;
         $note->keywords = $validated['keywords'] ?? null;
+        $note->event_id = $validated['event_id'] ?? null;
         $note->user_id = Auth::id();
         $note->save();
 

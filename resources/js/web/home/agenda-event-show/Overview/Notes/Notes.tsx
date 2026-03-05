@@ -22,7 +22,7 @@ interface NotesProps
 
 interface NotesState
 {
-    
+    data: any
 }
 
 export default class Notes extends React.Component<NotesProps, NotesState>
@@ -34,10 +34,19 @@ export default class Notes extends React.Component<NotesProps, NotesState>
     {
         super(props)
         this.state = {
-
+            data: null,
         }
         this.refDialogCreate = React.createRef()
         this.refDialogEdit = React.createRef()
+    }
+
+    componentDidMount(): void {
+        this.search()
+    }
+
+    componentDidUpdate(prevProps: Readonly<NotesProps>, prevState: Readonly<NotesState>, snapshot?: any): void {
+        if (this.props.data && prevProps.data && this.props.data.id != prevProps.data.id)
+            this.search()
     }
 
     async search()
@@ -55,6 +64,7 @@ export default class Notes extends React.Component<NotesProps, NotesState>
         const formData = {
             is_asc: false,
             max: 20,
+            event_id: this.props.data.id,
         }
 
         try {
@@ -93,18 +103,12 @@ export default class Notes extends React.Component<NotesProps, NotesState>
 
     handleEventOnClose()
     {
-        this.setState({
-            dataSelected: null,
-            isModeDelete: false,
-        })
+
     }
 
     handleEventOnDestroy()
     {
-        this.setState({
-            dataSelected: null,
-            isModeDelete: false,
-        })
+        
     }
     
     handleOnClose()
@@ -139,10 +143,12 @@ export default class Notes extends React.Component<NotesProps, NotesState>
 
     renderList()
     {
- 
+        const notes = this.state.data ? this.state.data.data : []
         return (
             <div className="list">
-                <Masonry items={ [] } />
+                <Masonry items={ notes }
+                    onEdit={ (data: any) => this.handleOnEdit(data) }
+                    onDelete={ () => this.handleOnDelete() } />
                 <Pagination />
             </div>
         )
@@ -167,10 +173,14 @@ export default class Notes extends React.Component<NotesProps, NotesState>
                         <XMarkIcon />
                     </button>
                 </div>
+                <h4>Notes</h4>
+                <p>Keep track of ideas, details, and important information for this event.</p>
                 { this.renderList() }
                 <DialogCreate ref={ this.refDialogCreate }
-                    onCreate={ () => this.handleOnCreate() } />
+                    data={ this.props.data }
+                    onStore={ () => this.handleOnStore() } />
                 <DialogEdit ref={ this.refDialogEdit }
+                    data={ this.props.data }
                     onUpdate={ () => this.handleOnUpdate() } />
             </div>
         )

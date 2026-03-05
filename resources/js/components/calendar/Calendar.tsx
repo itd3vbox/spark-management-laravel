@@ -148,6 +148,11 @@ export default class Calendar extends React.Component<CalendarProps, CalendarSta
         const { data } = this.props;
         const { year, month } = this.state;
 
+        const today = new Date();
+        const todayDate = today.getDate();
+        const todayMonth = today.getMonth();
+        const todayYear = today.getFullYear();
+
         return this.state.dates.map((dateInfo, index) => {
 
             const isCurrentMonth =
@@ -166,8 +171,16 @@ export default class Calendar extends React.Component<CalendarProps, CalendarSta
             const hasEvents = dayData?.data?.total > 0;
             const eventsClass = hasEvents ? "events" : "";
 
+            const isToday =
+                isCurrentMonth &&
+                dateInfo.date === todayDate &&
+                month === todayMonth &&
+                year === todayYear;
+
+            const todayClass = isToday ? "today" : "";
+
             return (
-                <div key={index} className={`${dateInfo.className} ${eventsClass}`}>
+                <div key={index} className={`${dateInfo.className} ${eventsClass} ${todayClass}`}>
                     <button
                         type="button"
                         className="btn"
@@ -179,7 +192,6 @@ export default class Calendar extends React.Component<CalendarProps, CalendarSta
             );
         });
     }
-
     
     render()
     {

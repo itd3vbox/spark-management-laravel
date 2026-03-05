@@ -9,6 +9,7 @@ import Links from "@/components/form/Links";
 
 interface DialogEditProps
 {
+    data: any
     onUpdate: () => void
 }
 
@@ -22,7 +23,9 @@ interface DialogEditState
 }
 
 export default class DialogEdit extends React.Component<DialogEditProps, DialogEditState>
-{
+{   
+    refDialog: any
+
     constructor(props: DialogEditProps)
     {
         super(props)
@@ -35,6 +38,7 @@ export default class DialogEdit extends React.Component<DialogEditProps, DialogE
                 links: [],
             },
         }
+        this.refDialog = React.createRef();
     }
 
     select(data: any = null)
@@ -42,21 +46,22 @@ export default class DialogEdit extends React.Component<DialogEditProps, DialogE
         const formData: any = {}
         if (data)
         {
-            console.log('data', data)
             formData['edit_url'] = `notes/${ data.id }`
             formData['title'] = data.title
             formData['content'] = data.content
             formData['keywords'] = data.keywords
             formData['links'] = data.links
         }
-        
-        console.log(formData)
 
-        this.setState({
-            ...this.state,
-            isSelected: !this.state.isSelected,
+        this.setState(prevState => ({
+            ...prevState,
+            isSelected: !prevState.isSelected,
             formData: formData,
-        })
+        }), () => {
+            if (this.state.isSelected && this.refDialog.current) {
+                this.refDialog.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     }
 
     async update() 
@@ -143,7 +148,9 @@ export default class DialogEdit extends React.Component<DialogEditProps, DialogE
     render()
     {
         return (
-            <div className={ "dialog-edit" + (this.state.isSelected ? ' selected' : '') }>
+            <div 
+                ref={this.refDialog}
+                className={ "dialog-edit" + (this.state.isSelected ? ' selected' : '') }>
                 <div className="dc-close">
                     <button type="button" className="btn-close"
                         onClick={ () => this.select() }>

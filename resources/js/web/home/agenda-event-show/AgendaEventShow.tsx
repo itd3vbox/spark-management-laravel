@@ -44,12 +44,26 @@ export default class AgendaEventShow extends React.Component<AgendaEventShowProp
 
     componentDidMount(): void {
         if (this.props.data)
-            this.search()
+        {
+            this.setState({
+                dataHour: { 
+                    date:  this.props.data.date,
+                    time: null,
+                },
+            }, () => this.search())
+        }
     }
 
     componentDidUpdate(prevProps: Readonly<AgendaEventShowProps>, prevState: Readonly<AgendaEventShowState>, snapshot?: any): void {
         if (this.props.data && prevProps.data !== this.props.data)
-            this.search()
+        {
+            this.setState({
+                dataHour: { 
+                    date:  this.props.data.date,
+                    time: null,
+                },
+            }, () => this.search())
+        }
     }
 
     async search()

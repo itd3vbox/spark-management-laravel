@@ -1,9 +1,11 @@
 .p-list
     width: 100%
     flex: 1
-    display: grid
-    grid-template-columns: repeat(auto-fill, 250px)
-    gap: 10px
-    justify-content: center
+    display: flex
+    flex-direction: column
+    gap: 25px
 
+    @import './_masonry'
     @import './note/main'
+
+    @import "@/components/pagination/sass/main"

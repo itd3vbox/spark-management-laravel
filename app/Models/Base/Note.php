@@ -4,6 +4,7 @@ namespace App\Models\Base;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Base\AgendaEvent;
 
 class Note extends Model
 {
@@ -16,7 +17,13 @@ class Note extends Model
      */
     protected $appends = [
         'status_info',
+        'date_info',
     ];
+
+    public function event()
+    {
+        return $this->belongsTo(AgendaEvent::class, 'event_id');
+    }
 
     public function getStatusInfoAttribute()
     {
@@ -41,4 +48,23 @@ class Note extends Model
         ];
     }
 
+    public function getDateInfoAttribute()
+    {
+        return [
+            'created_at' => $this->created_at ? $this->created_at->format('Y-m-d') : null,
+            'updated_at' => $this->updated_at ? $this->updated_at->format('Y-m-d') : null,
+        ];
+    }
+
+    public function getEventInfoAttribute()
+    {
+        if ($this->event) {
+            return [
+                'event_id' => $this->event->id,
+                'date' => $this->event->date,
+                'time' => $this->event->time,
+            ];
+        }
+        return null;
+    }
 }

@@ -9,7 +9,8 @@ import Links from "@/components/form/Links";
 
 interface DialogCreateProps
 {
-    onCreate: () => void
+    data: any
+    onStore: () => void
 }
 
 
@@ -23,6 +24,7 @@ interface DialogCreateState
 
 export default class DialogCreate extends React.Component<DialogCreateProps, DialogCreateState>
 {
+    refDialog: any
 
     constructor(props: DialogCreateProps)
     {
@@ -36,14 +38,19 @@ export default class DialogCreate extends React.Component<DialogCreateProps, Dia
                 links: null,
             },
         }
+        this.refDialog = React.createRef();
     }
 
-    select()
-    {
-        this.setState({
-            ...this.state,
-            isSelected: !this.state.isSelected,
-        })
+    select() {
+        this.setState(
+            prevState => ({ ...prevState, isSelected: !prevState.isSelected }),
+            () => {
+                // scroll only if it's now selected
+                if (this.state.isSelected && this.refDialog.current) {
+                    this.refDialog.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        );
     }
 
     async store()
@@ -64,11 +71,10 @@ export default class DialogCreate extends React.Component<DialogCreateProps, Dia
         //multipartFormData.append('_method', 'PUT')
         for (const key in formData) 
         {
-            if (key === 'description')
-                multipartFormData.append(key, JSON.stringify({ content: formData[key] }))
-            else
-                multipartFormData.append(key, formData[key])
+            multipartFormData.append(key, formData[key])
         }
+
+        multipartFormData.append('event_id', this.props.data.id)
         
         try {
             const response = await fetch(url, {
@@ -85,12 +91,12 @@ export default class DialogCreate extends React.Component<DialogCreateProps, Dia
 
             this.setState({
                 formData: {
-                     title: '',
+                    title: '',
                     content: '',
-                    keywords: null,
-                    links: null,
+                    keywords: [],
+                    links: [],
                 }
-            }, () => this.props.onCreate())
+            }, () => this.props.onStore())
         } 
         catch (error) 
         {
@@ -138,7 +144,8 @@ export default class DialogCreate extends React.Component<DialogCreateProps, Dia
     render()
     {
         return (
-            <div className={ "dialog-create" + (this.state.isSelected ? ' selected' : '') }>
+            <div ref={this.refDialog} 
+                className={ "dialog-create" + (this.state.isSelected ? ' selected' : '') }>
                 <div className="dc-close">
                     <button type="button" className="btn-close"
                         onClick={ () => this.select() }>

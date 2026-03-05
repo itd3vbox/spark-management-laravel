@@ -87,8 +87,8 @@ export default class DialogCreate extends React.Component<DialogCreateProps, Dia
                 formData: {
                      title: '',
                     content: '',
-                    keywords: null,
-                    links: null,
+                    keywords: [],
+                    links: [],
                 }
             }, () => this.props.onCreate())
         } 

@@ -27,7 +27,7 @@ return new class extends Migration
                 ->on('users');
 
             $table->foreignId('event_id')
-                ->nullable()                 // <-- rend la colonne nullable
+                ->nullable()                 
                 ->constrained('agenda_events')
                 ->onDelete('cascade');
 

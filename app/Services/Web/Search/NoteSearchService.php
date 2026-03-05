@@ -18,10 +18,15 @@ class NoteSearchService
             'is_asc' => false,
             'max' => 20,
             'status' => null,
-            'keywords' => null, 
+            'keywords' => null,
+            'event_id' => null,
         ], $options);
 
-        $query = NoteEntity::query();
+        $query = NoteEntity::query()->with('event:id,date,time');
+
+        if (!is_null($options['event_id'])) {
+            $query->where('event_id', $options['event_id']);
+        }
 
         if (!is_null($options['status'])) {
             $query->where('status', $options['status']);
@@ -44,7 +49,6 @@ class NoteSearchService
 
         return $query->paginate($options['max']);
     }
-
 
     public function searchOne($id)
     {
