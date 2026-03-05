@@ -212,7 +212,6 @@ export default class Settings extends React.Component<any, SettingsState>
                         <ImageUploader
                             path={ this.state.user.avatar_info.path }
                             onUpload={(data: any) => this.handleImageOnUpload(data)} />
-                        <p className="error">Avatar should not be empty.</p>
                     </div>
 
                     <div className="block-name">
@@ -222,7 +221,6 @@ export default class Settings extends React.Component<any, SettingsState>
                             value={ this.state.formData.name }
                             placeholder="Ex.:John Doe"
                             onChange={(e) => this.handleInputOnChange(e)} />
-                        <p className="error">Name should not be empty.</p>
                     </div>
 
                     <div className="block-username">
@@ -232,7 +230,6 @@ export default class Settings extends React.Component<any, SettingsState>
                             value={ this.state.formData.username }
                             placeholder="Ex.:johndoe"
                             onChange={(e) => this.handleInputOnChange(e)} />
-                        <p className="error">Username should not be empty.</p>
                     </div>
                         
                     <div className="block-email">
@@ -242,7 +239,6 @@ export default class Settings extends React.Component<any, SettingsState>
                             value={ this.state.formData.email }
                             placeholder="Ex.: contact@projectmanager.org"
                             onChange={(e) => this.handleInputOnChange(e)} />
-                        <p className="error">Email should not be empty.</p>
                     </div>
 
                     <div className="block-password">
