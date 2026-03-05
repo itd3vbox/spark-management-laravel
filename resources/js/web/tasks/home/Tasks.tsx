@@ -2,12 +2,15 @@ import React from "react"
 import {
     XMarkIcon,
     PlusIcon,
+    CheckCircleIcon,
 } from '@heroicons/react/24/outline';
 import Task from "./Task";
 import DialogCreate from "./DialogCreate/DialogCreate";
 import Pagination from "@/components/pagination/Pagination";
 import DialogEdit from "./DialogEdit/DialogEdit";
 import DialogDelete from "./DialogDelete/DialogDelete";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiceD20 } from "@fortawesome/free-solid-svg-icons";
 
 interface TasksProps
 {
@@ -117,6 +120,10 @@ export default class Tasks extends React.Component<any, TasksState>
     {
         const tasks = this.state.data ? this.state.data.data : []
         let elements: any = []
+
+        if (!tasks.length)
+            return (<></>)
+
         for (let index = 0; index < tasks.length; index++) 
         {
             elements.push(
@@ -128,26 +135,53 @@ export default class Tasks extends React.Component<any, TasksState>
             )
         }
 
-        return elements
+        return (
+            <div className="p-list">
+                <div className="tasks">{ elements }</div>
+                <Pagination />
+            </div>
+        )
+    }
+
+    renderMessageEmpty() 
+    {
+        const tasks = this.state.data ? this.state.data.data : []
+
+        if (tasks.length) return (<></>)
+
+        return (
+            <div className="p-message-empty">
+                <div className="icon">
+                    <CheckCircleIcon />
+                </div>
+                <div className="text">
+                    <h4>No Tasks Available</h4>
+                    <p>There are currently no tasks to display.</p>
+                </div>
+            </div>
+        )
     }
 
     render()
     {
+        const userMetaTag = document.querySelector('meta[name="user-is-admin"]');
+        let userIsAdmin = userMetaTag?.getAttribute('content') === '1';
+
         return (
-            <div id="tasks">
+            <>
                 <div className="p-options">
                     <div className="options">
-                        <button type="button" className="btn-create"
-                            onClick={ () => this.handleDialogCreateOnSelect() }>
-                           <PlusIcon />
-                        </button>
+                        { userIsAdmin === true && (
+                            <button type="button" className="btn-create"
+                                onClick={ () => this.handleDialogCreateOnSelect() }>
+                            <PlusIcon />
+                            </button>
+                        ) }
                     </div>
                     <div className="dialogs"></div>
                 </div>
-                <div className="p-list">
-                    { this.renderTasks() }
-                </div>
-                <Pagination />
+                { this.renderTasks() }
+                { this.renderMessageEmpty() }
                 <DialogCreate ref={ this.refDialogCreate }
                     onCreate={ () => this.handleOnCreate() } />
                 <DialogEdit ref={ this.refDialogEdit }
@@ -155,7 +189,7 @@ export default class Tasks extends React.Component<any, TasksState>
                 <DialogDelete
                     ref={ this.refDialogDelete }
                     onDelete={ () => this.handleOnDestroy() } />
-            </div>
+            </>
         )
     }
 }
