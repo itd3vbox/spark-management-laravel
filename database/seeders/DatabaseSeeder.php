@@ -11,6 +11,7 @@ use Database\Seeders\UserSeeder as UserSeeder;
 use Database\Seeders\ProjectSeeder as ProjectSeeder;
 use Database\Seeders\TaskSeeder as TaskSeeder;
 use Database\Seeders\AutomateSeeder as AutomateSeeder;
+use Database\Seeders\ChatMessageSeeder as ChatMessageSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -33,6 +34,7 @@ class DatabaseSeeder extends Seeder
             ProjectSeeder::class,
             TaskSeeder::class,
             AutomateSeeder::class,
+            ChatMessageSeeder::class,
         ]);
     }
 }

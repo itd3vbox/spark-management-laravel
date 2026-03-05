@@ -1,2 +1,23 @@
 .page-chat
-    
+    width: 300px
+    height: 400px
+    max-height: calc( 100% - 20px )
+    position: fixed
+    bottom: 10px
+    right: 50px
+    border-radius: 1rem
+    box-shadow: 1px 1px 4px #000
+    background-color: var(--color-3)
+    color: var(--color-2)
+    overflow: hidden
+    display: none
+    flex-direction: column
+    z-index: 110
+
+    &.selected
+        display: flex
+
+    @import './_top'
+    @import './_messages'
+    @import './_input'
+    @import './_block-tools'

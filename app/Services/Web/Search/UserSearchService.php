@@ -45,8 +45,6 @@ class UserSearchService
         return $query->paginate($options['max']);
     }
 
-
-
     public function searchOne($id)
     {
         if (!isset($id)) {

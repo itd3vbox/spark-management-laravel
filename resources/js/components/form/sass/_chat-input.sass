@@ -1,0 +1,41 @@
+.form-chat-input
+    width: 100%
+    border-radius: 1rem
+    border: 1px solid var(--color-16)
+    box-sizing: border-box
+    padding: 10px
+
+    .chat-input
+        width: 100%
+        font-size: 0.9rem
+        outline: none
+        min-height: 1.2em           
+        max-height: 150px        
+        overflow-y: auto             
+
+        .editor-line
+            min-height: 1.2em
+
+        .editor-line.is-empty::before
+            content: attr(data-placeholder)
+            color: var(--color-16)
+            pointer-events: none
+        
+    .chat-options
+        display: flex
+        justify-content: space-between
+        align-items: center
+        gap: 10px
+
+        @import '@/components/button-icon/sass/main'
+        .o-right
+            .button-icon
+                width: 30px
+                height: 30px
+                font-size: 15px
+                border-radius: 50%
+                background-color: var(--color-4)
+                color: var(--color-16)
+                svg
+                    width: 15px
+                    

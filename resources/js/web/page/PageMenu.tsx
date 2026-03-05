@@ -11,6 +11,7 @@ const VITE_APP_NAME = import.meta.env.VITE_APP_NAME;
 interface PageMenuProps
 {
     menuItemCurrent: string
+    onChatSelect: () => void
 }
 
 
@@ -51,6 +52,11 @@ export default class PageMenu extends React.Component<PageMenuProps, PageMenuSta
         })
     }
 
+    handleOnChat()
+    {
+        this.props.onChatSelect()
+    }
+
     render() {
         return (
             <div className={ `pg-wrapper ${this.state.isSelected ? ' selected' : ''}` }>
@@ -65,7 +71,8 @@ export default class PageMenu extends React.Component<PageMenuProps, PageMenuSta
                     <a className="btn" href="/sign-out">
                         <FontAwesomeIcon icon={ faRightFromBracket } />
                     </a>
-                    <button type="button" className="btn">
+                    <button type="button" className="btn"
+                        onClick={ () => this.handleOnChat() }>
                         <FontAwesomeIcon icon={ faMessage } />
                     </button>
                 </div>

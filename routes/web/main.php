@@ -18,6 +18,7 @@ require base_path('routes/web/_automates-scheduler.php');
 require base_path('routes/web/_settings.php');
 require base_path('routes/web/_search.php');
 require base_path('routes/web/_agenda.php');
+require base_path('routes/web/_chat.php');
 
 Route::middleware([AuthSpace::class])->group(function () {
     Route::get('/', [HomeController::class, 'index'])

@@ -1,0 +1,61 @@
+.pc-top
+    width: 100%
+    box-sizing: border-box
+    padding: 10px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    gap: 10px
+
+    .users
+        flex: 1
+        display: flex
+        align-items: center
+        position: relative
+
+        .user
+            width: 30px
+            height: 30px
+            box-sizing: border-box
+            border: 1px solid var(--color-16)
+            background-color: var(--color-3)
+            border-radius: 50%
+            overflow: hidden
+            position: relative
+            &:nth-child(2)
+                left: -15px
+            &:nth-child(3)
+                left: -30px
+                
+            img
+                width: 100%
+                height: 100%
+                object-fit: cover
+                object-position: center
+        .total
+            height: 30px
+            border-radius: 15px
+            background-color: var(--color-16)
+            color: var(--color-3)
+            display: inline-flex
+            align-items: center
+            box-sizing: border-box
+            padding: 0 10px
+            font-size: 15px
+            position: relative
+            left: -20px
+
+    .options
+        display: flex
+        align-items: center
+        gap: 10px
+        .btn-more,
+        .btn-close
+            background-color: var(--color-3)
+            color: var(--color-16)
+            svg
+                width: 15px
+                height: 15px
+
+
+        

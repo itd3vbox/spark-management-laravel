@@ -152,7 +152,7 @@ export default class Home extends React.Component<HomeProps, HomeState>
             <div id="home">
                 <div className="h-zero">
                     <div className="block-zero">
-                        <img src="/images/project-manager.png" alt="" />
+                        <img src="/images/spark-management.png" alt="" />
                     </div>
                     <div className="block-indicators">
                         <div className="indicator">

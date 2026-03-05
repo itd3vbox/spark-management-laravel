@@ -6,6 +6,7 @@ import {
 } from '@heroicons/react/24/outline';
 import PageMenu from "./PageMenu";
 import PageTop from "./PageTop/PageTop";
+import PageChat from "./PageChat/PageChat";
 
 
 
@@ -24,6 +25,7 @@ interface PageState
 export default class Page extends React.Component<PageProps, PageState>
 {
     refPageMenu: any 
+    refPageChat: any
 
     constructor(props: PageProps)
     {
@@ -33,6 +35,7 @@ export default class Page extends React.Component<PageProps, PageState>
         }
 
         this.refPageMenu = React.createRef()
+        this.refPageChat = React.createRef()
     }
 
     componentDidMount()
@@ -42,7 +45,8 @@ export default class Page extends React.Component<PageProps, PageState>
             const rootPageMenu = createRoot(pageMenuElement);
             rootPageMenu.render(<PageMenu 
                 ref={ this.refPageMenu }
-                menuItemCurrent={ this.props.menuItem } />);
+                menuItemCurrent={ this.props.menuItem }
+                onChatSelect={ () => this.handleOnChatSelect() } />);
         }
 
         const pageTopElement = document.getElementById('page-top');
@@ -61,10 +65,17 @@ export default class Page extends React.Component<PageProps, PageState>
         this.refPageMenu.current.select()
     }
 
+    handleOnChatSelect()
+    {
+        this.refPageChat.current.select()
+    }
+
     render()
     {
         return (
-            <></>
+            <>
+                <PageChat ref={ this.refPageChat } />
+            </>
         )
     }
 }
