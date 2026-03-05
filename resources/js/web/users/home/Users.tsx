@@ -3,12 +3,14 @@ import {
     XMarkIcon,
     CreditCardIcon,
     PlusIcon,
+    UserGroupIcon,
 } from '@heroicons/react/24/outline';
 import DialogCreate from "./DialogCreate/DialogCreate";
 import Pagination from "@/components/pagination/Pagination";
 import DialogEdit from "./DialogEdit/DialogEdit";
 import DialogDelete from "./DialogDelete/DialogDelete";
 import User from "./User";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface UsersProps
 {
@@ -119,6 +121,10 @@ export default class Users extends React.Component<UsersProps, UsersState>
     {
         const users = this.state.data ? this.state.data.data : []
         const elements: any = []
+        
+        if (!users.length)
+            return (<></>)
+
         for (let index = 0; index < users.length; index++) 
         {
             const user = users[index]
@@ -133,13 +139,38 @@ export default class Users extends React.Component<UsersProps, UsersState>
             )
         }
 
-        return elements
+        return (
+            <div className="p-list">
+                <div className="users">{ elements }</div>
+                <Pagination />
+            </div>
+        )
+    }
+
+    renderMessageEmpty()
+    {
+        const users = this.state.data ? this.state.data.data : []
+
+        if (users.length)
+            return (<></>)
+
+        return (
+            <div className="p-message-empty">
+                <div className="icon">
+                    <UserGroupIcon />
+                </div>
+                <div className="text">
+                    <h4>No Users Found</h4>
+                    <p>There are currently no users available to display.</p>
+                </div>
+            </div>
+        )
     }
 
     render()
     {
         return (
-            <div id="users">
+            <>
                 <div className="p-options">
                     <div className="options">
                         { this.props.isAdmin === true && (
@@ -151,17 +182,15 @@ export default class Users extends React.Component<UsersProps, UsersState>
                     </div>
                     <div className="dialogs"></div>
                 </div>
-                <div className="p-list">
-                    { this.renderUsers() }
-                </div>
-                <Pagination />
+                { this.renderUsers() }
+                { this.renderMessageEmpty() }
                 <DialogCreate ref={ this.refDialogCreate }
                     onCreate={ () => this.handleOnCreate() } />
                 <DialogEdit ref={ this.refDialogEdit }
                     onUpdate={ () => this.handleOnUpdate() } />
                 <DialogDelete ref={ this.refDialogDelete }
                     onDelete={ () => this.handleOnDelete() } />
-            </div>
+            </>
         )
     }
 }
