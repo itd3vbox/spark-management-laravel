@@ -9,6 +9,8 @@ import DialogShow from "./DialogShow/DialogShow";
 import DialogDelete from "./DialogDelete/DialogDelete";
 import Pagination from "@/components/pagination/Pagination";
 import DialogEdit from "./DialogEdit/DialogEdit";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiceD6 } from "@fortawesome/free-solid-svg-icons";
 
 
 interface ProjectsProps
@@ -123,39 +125,72 @@ export default class Projects extends React.Component<ProjectsProps, ProjectsSta
 
     renderProjects()
     {
-        const preojects = this.state.data.data ? this.state.data.data.data : []
+        const projects = this.state.data.data ? this.state.data.data.data : []
         let elements: any = []
-        for (let index = 0; index < preojects.length; index++) 
+
+        if (!projects.length)
+            return (<></>)
+
+        for (let index = 0; index < projects.length; index++) 
         {
+            const project = projects[index]
             elements.push(
                 <Project key={ index } 
-                    data={preojects[index]}
+                    data={project}
                     onShow={ (data: any) => this.handleDialogShowOnSelect(data) }
                     onEdit={ (data: any) => this.handleDialogEditOnSelect(data) }
                     onDelete={ (data: any) => this.handleDialogDeleteOnSelect(data) } />
             )
         }
 
-        return elements
+        return (
+            <div className="p-list">
+                <div className="projects">{ elements }</div>
+                <Pagination />
+            </div>
+        )
+    }
+
+    renderMessageEmpty()
+    {
+        const projects = this.state.data?.data?.data || []
+
+        if (projects.length)
+            return (<></>)
+
+        return (
+            <div className="p-message-empty">
+                <div className="icon">
+                    <FontAwesomeIcon icon={ faDiceD6 } />
+                </div>
+                <div className="text">
+                    <h4>No Projects Found</h4>
+                    <p>There are currently no projects available to display.</p>
+                </div>
+            </div>
+        )
     }
 
     render()
     {
+        const userMetaTag = document.querySelector('meta[name="user-is-admin"]');
+        let userIsAdmin = userMetaTag?.getAttribute('content') === '1';
+
         return (
-            <div id="projects">
+            <>
                 <div className="p-options">
                     <div className="options">
-                        <button type="button" className="btn-create"
-                            onClick={ () => this.handleDialogCreateOnSelect() }>
-                           <PlusIcon />
-                        </button>
+                        { userIsAdmin === true && (
+                            <button type="button" className="btn-create"
+                                onClick={ () => this.handleDialogCreateOnSelect() }>
+                            <PlusIcon />
+                            </button>
+                        ) }
                     </div>
                     <div className="dialogs"></div>
                 </div>
-                <div className="p-list">
-                    { this.renderProjects() }
-                </div>
-                <Pagination />
+                { this.renderProjects() }
+                { this.renderMessageEmpty() }
                 <DialogCreate 
                     ref={ this.refDialogCreate }
                     onCreate={ () => this.handleOnCreate() } />
@@ -167,7 +202,7 @@ export default class Projects extends React.Component<ProjectsProps, ProjectsSta
                     onDelete={ () => this.handleOnDestroy() } />
                 <DialogShow 
                     ref={ this.refDialogShow } data={ {} } />
-            </div>
+            </>
         )
     }
 }

@@ -104,7 +104,7 @@ export default class Project extends React.Component<ProjectProps, ProjectState>
                 <div className="status-options">
                     <div className="status">
                         <div className="indicator"></div>
-                        <div className="value">On Progess</div>
+                        <div className="value">{ this.props.data.status_info.value_text }</div>
                     </div>
                     <button className="btn-more" type="button"
                         onClick={ (event) => this.handleBlockToolsOnSelect(event) }>
@@ -118,10 +118,10 @@ export default class Project extends React.Component<ProjectProps, ProjectState>
                     <p className="description-short">{ this.props.data.description_short }</p>
                     <div className="date-updated">
                         <CalendarIcon />
-                        <div className="value">2024-12-31</div>
+                        <div className="value">{ this.props.data.date_info.created_at }</div>
                     </div>
                     <div className="progress">
-                        <div className="progress-bar" style={{ width: '42%' }}></div>
+                        <div className="progress-bar" style={{ width: `${this.props.data.progress}%` }}></div>
                     </div>                  
                 </div>
                 { this.renderTools() }

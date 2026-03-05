@@ -1,9 +1,21 @@
 .p-list
     width: 100%
     flex: 1
-    display: grid
-    grid-template-columns: repeat(auto-fill, 300px)
-    justify-content: center
+    display: flex
+    flex-direction: column
     gap: 25px
 
-    @import './project/main'
+    .projects
+        width: 100%
+        display: grid
+        grid-template-columns: repeat(auto-fill, 300px)
+        justify-content: center
+        gap: 10px
+        align-items: flex-start
+
+        @import './project/main'
+
+    @import "@/components/pagination/sass/main"
+    .pagination
+        margin: 0
+        margin-top: auto

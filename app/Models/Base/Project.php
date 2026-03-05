@@ -17,6 +17,10 @@ class Project extends Model
     protected $appends = [
         'image_info',
         'status_info',
+        'total_tasks',
+        'completed_tasks',
+        'progress',
+        'date_info',
     ];
 
     // App\Models\Base\Project.php
@@ -45,18 +49,12 @@ class Project extends Model
     public function getStatusInfoAttribute()
     {
         $value = 0;
-        $value_text = 'reset';
+        $value_text = 'Suspended';
 
         if ($this->status === 1) 
         {
            $value = 1;
-           $value_text = 'done';
-        }
-
-        if ($this->status === 2) 
-        {
-            $value = 2;
-            $value_text = 'on progress';
+           $value_text = 'Active';
         }
         
         return [
@@ -65,4 +63,29 @@ class Project extends Model
         ];
     }
 
+    public function getTotalTasksAttribute()
+    {
+        return $this->tasks()->count();
+    }
+
+    public function getCompletedTasksAttribute()
+    {
+        return $this->tasks()->where('status', 1)->count();
+    }
+
+    public function getProgressAttribute()
+    {
+        $total = $this->total_tasks;
+        if ($total === 0) return 0;
+
+        return round($this->completed_tasks / $total * 100);
+    }
+
+        public function getDateInfoAttribute()
+    {
+        return [
+            'created_at' => $this->created_at ? $this->created_at->format('Y-m-d') : null,
+            'updated_at' => $this->updated_at ? $this->updated_at->format('Y-m-d') : null,
+        ];
+    }
 }
